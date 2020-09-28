@@ -1,0 +1,51 @@
+<div class="user_info">
+    <h2>User info</h2>
+    <%= attachment_image_tag user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th>name</th>
+          <th><%= user.name %></th>
+        </tr>
+        <tr>
+          <th>introduction</th>
+          <th><%= user.introduction %></th>
+        </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <% if user == current_user %>
+        <%= link_to edit_user_path(current_user.id) do %>
+          <button type="button" class="col-xs-12 btn btn-default edit_user_25037">
+            <i class="glyphicon glyphicon-wrench"></i>
+          </button>
+        <% end %>
+      <% else %>
+        <%= link_to user_path(current_user.id) do %>
+          <button type="button" class="col-xs-12 btn btn-default edit_user_25037">
+            <i class="glyphicon glyphicon-wrench"></i>
+          </button>
+        <% end %>
+      <% end %>
+    </div>
+</div>
+<div class="new_book">
+  <h2>New book</h2>
+  <%= form_with model: book, local:true do |f| %>
+    <div class="field row">
+      <div >
+        <label>Title</label></br>
+        <%= f.text_field :title, class: "col-xs-12" %>
+      </div>
+    </div>
+    <div class="field row">
+      <div>
+        <label>Opinion</label></br>
+        <%= f.text_area :body, class: "col-xs-12" %>
+      </div>
+    </div>
+    <div class="actions row">
+      <%= f.submit "Create Book",class:"btn btn-primary col-xs-12" %>
+    </div>
+  <% end %>
+</div>
