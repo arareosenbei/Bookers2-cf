@@ -27,7 +27,7 @@ before_action :authenticate_user!
         @book_new = Book.new
         @book = Book.find(params[:id])
         @user = User.find(@book.user_id)
-
+        @book_comment = BookComment.new
     end
 
     def edit
@@ -44,6 +44,7 @@ before_action :authenticate_user!
             flash[:suscess] = "You have updated book successfully."
             redirect_to book_path(@book)
         else
+            
             render 'edit'
         end
     end
