@@ -1,7 +1,7 @@
 
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-            <%= render 'books/list', user: @user, book: @book_new %>
+            <%= render 'books/list', user: @user, book: @book_new, relationship: @relationship %>
         </div>
         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 ">
             <h2>Books</h2>
@@ -36,12 +36,10 @@
                                     <% end %>
                                            
                                 <% else %>
-                                            
                                     <%= link_to book_favorites_path(book), method: :post do %>
                                         <span class="glyphicon glyphicon-heart-empty" aria-hidden="true"></span>
                                         <%= book.favorites.count %>
                                     <% end %>
-                                            
                                 <% end %>
                             </td>
 						    <td>コメント数:<%= book.book_comments.count %></td>
